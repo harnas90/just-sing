@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Just Sing</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Just sing</h1>
+        <div class="game-board category-select">
+            <div class="categories">
+                <div class="category" data-id="disney"><span>Disney</span></div>
+                <div class="category" data-id="kids"><span>Kids TV series</span></div>
+                <div class="category" data-id="musicals"><span>Musicals</span></div>
+                <div class="category" data-id="80's"><span>80's</span></div>
+            </div>
+            <!-- <div class="game-start">
+                <label for="player">Enter player name:</label>
+                <input type="text" name="player" id="player">
+                <button class="btn">start</button>
+            </div> -->
+        </div>
+        <div class="game-board main display">
+            <span class="movie text"></span>
+            <span class="title text"></span>
+        <div class="answer-btn">
+            <button class="correct btn game-btn" data-answer="correct">Correct</button>
+            <button class="wrong btn game-btn" data-answer="wrong">Wrong</button>
+        </div>
+        </div>
+        <div class="reset-btn display ">
+            <button class="btn again">Play again</button>
+        </div>
+        
+    </div>
+
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
