@@ -15,6 +15,7 @@ const mainMenuBtn = document.querySelector(".return")
 // Category select, game initialize
 let activeCategory = "";
 let data = "";
+let dataCopyForReset = "";
 
 function chooseCategory(){
     activeCategory = this.dataset.id;
@@ -26,11 +27,8 @@ function chooseCategory(){
     
     categorySelect.classList.add("display");
     mainGameBoard.classList.remove("display");
-
     console.log(data);
-    console.log(categorySelect);
-    console.log(mainGameBoard);
-    console.log(data[3].title);
+    dataCopyForReset = [...data];
     drowSong();
 
 }
@@ -39,21 +37,22 @@ function chooseCategory(){
 // Game
 let playerScore = 0
 let rounds = 5
-let answer = "empty";
-
+let answer = "empty"; 
 function drowSong(){
-    const database = data
-    let index = Math.floor(Math.random() * database.length)
+    let dataCopy = [...data];
+    let index = Math.floor(Math.random() * dataCopy.length)
 
-    title.textContent = database[index].title;
-    movie.textContent = database[index].movie;
+    title.textContent = dataCopy[index].title;
+    movie.textContent = dataCopy[index].movie;
 
     answer = this.dataset.answer;
-    console.log(answer);
     rounds--
     if (answer == "correct"){
         playerScore++;
     }
+    dataCopy.splice(index, 1);
+    data = dataCopy;
+    console.log(data)
     
     if (rounds == 0) {
         title.textContent = `Your result: ${playerScore}/5`;
@@ -74,6 +73,7 @@ function playAgain(){
     playerScore = 0
     rounds = 5
     answer = "empty";
+    data = dataCopyForReset;
     resetBtns.classList.add("display");
     drowSong();
 }
@@ -82,9 +82,11 @@ function returnToCategories(){
     playerScore = 0
     rounds = 5
     answer = "empty";
+    data = "";
     resetBtns.classList.add("display");
     categorySelect.classList.remove("display");
     mainGameBoard.classList.add("display");
+    console.log(data)
 };
 
 
