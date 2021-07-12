@@ -8,8 +8,9 @@ const mainGameBoard = document.querySelector(".main");
 const btn = document.querySelectorAll(".game-btn")
 const title = document.querySelector(".title")
 const movie = document.querySelector(".movie")
-const playAgain = document.querySelector(".again")
-const resetBtn = document.querySelector(".reset-btn")
+const playAgainBtn = document.querySelector(".again")
+const resetBtns = document.querySelector(".reset-btns")
+const mainMenuBtn = document.querySelector(".return")
 
 // Category select, game initialize
 let activeCategory = "";
@@ -57,7 +58,7 @@ function drowSong(){
     if (rounds == 0) {
         title.textContent = `Your result: ${playerScore}/5`;
         movie.textContent = "Game over";
-        resetBtn.classList.remove("display");
+        resetBtns.classList.remove("display");
     } else if (rounds < 0) {
         title.textContent = "";
         movie.textContent = `Click "play again button"`;
@@ -69,19 +70,30 @@ function drowSong(){
     console.log(rounds);
 };
 
-function reset(){
+function playAgain(){
     playerScore = 0
     rounds = 5
     answer = "empty";
-    resetBtn.classList.add("display");
+    resetBtns.classList.add("display");
     drowSong();
 }
+
+function returnToCategories(){
+    playerScore = 0
+    rounds = 5
+    answer = "empty";
+    resetBtns.classList.add("display");
+    categorySelect.classList.remove("display");
+    mainGameBoard.classList.add("display");
+};
 
 
 
 btn.forEach(el => el.addEventListener('click', drowSong));
 categories.forEach(el => el.addEventListener('click', chooseCategory));
-playAgain.addEventListener('click', reset);
+playAgainBtn.addEventListener('click', playAgain);
+mainMenuBtn.addEventListener('click', returnToCategories);
+
 
 
 

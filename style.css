@@ -125,3 +125,11 @@ h1 {
   background-color: red;
   margin-left: 15px;
 }
+
+.reset-btns {
+  text-align: center;
+}
+
+.again {
+  margin: 15px auto;
+}
